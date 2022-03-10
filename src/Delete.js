@@ -4,11 +4,11 @@ import { useGlobalContext } from "./context";
 import { Delete as DeleteIcon } from "@mui/icons-material";
 
 function Delete() {
-  const { deleteNote, selectedNoteId } = useGlobalContext();
+  const { deleteNote } = useGlobalContext();
   const navigate = useNavigate();
 
   const handleDelete = () => {
-    deleteNote(selectedNoteId);
+    deleteNote();
     navigate("/");
   };
 

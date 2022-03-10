@@ -14,15 +14,13 @@ function Edit() {
   const [birdName, setBirdName] = useState("");
   const [place, setPlace] = useState("");
   const [isButtonPressed, setIsButtonPressed] = useState(false);
-  const { editNote, deleteNote, observationList, selectedNoteId } =
-    useGlobalContext();
+  const { editNote, observationList, selectedNoteId } = useGlobalContext();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsButtonPressed(true);
     if (!isAfter(datetime, maxDateTime) && birdName !== "" && place !== "") {
-      deleteNote(selectedNoteId);
       editNote(birdName, place, datetime);
       navigate("/");
     }

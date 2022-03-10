@@ -22,12 +22,14 @@ function AppProvider({ children }) {
     setObservationList([...observationList, newNote]);
   };
 
-  const deleteNote = (id) => {
-    const newList = observationList.filter((listItem) => listItem.id !== id);
+  const deleteNote = () => {
+    const newList = observationList.filter(
+      (listItem) => listItem.id !== selectedNoteId
+    );
     setObservationList(newList);
   };
   const editNote = (birdName, place, datetime) => {
-    const allNotes = [...observationList];
+    const allNotes = observationList;
     let index = observationList.findIndex(
       (listItem) => listItem.id === selectedNoteId
     );
@@ -39,8 +41,7 @@ function AppProvider({ children }) {
       datetime: new Date(datetime),
     };
     allNotes[index] = selectedNote;
-    console.log(allNotes[index]);
-    setObservationList([...allNotes]);
+    setObservationList(allNotes);
   };
 
   useEffect(() => {
